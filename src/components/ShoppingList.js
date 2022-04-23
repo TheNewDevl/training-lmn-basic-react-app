@@ -17,7 +17,9 @@ export default function ShoppingList() {
 
             <ul className='lmj-plant-list'>
                 {plantList.map((plant, index) => (
-                    <li key={`${plant}-${index}`}>{plant.name} {plant.isBestSale && <span>🔥</span>}
+                    <li className='lmj-plant-item' key={`${plant}-${index}`}>
+                        {plant.name}
+                        {plant.isSpecialOffer && <div className='lmj-sales'>Soldes</div>}
                     </li>
                 ))}
             </ul>
