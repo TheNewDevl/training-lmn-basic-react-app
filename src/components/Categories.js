@@ -1,15 +1,17 @@
+import '../styles/Categories.css'
 function Categories({ categories, catState, updateCatState }) {
 
-    function handleCategory(value) {
 
-        updateCatState(value)
-    }
-    console.log(catState);
+
     return (
-        <div>
+        <div className='lmj-categories'>
 
-            <select onChange={(e) => handleCategory(e.target.value)} name="Categories" id="">
-                <option value="">Catégorie</option>
+            <select
+                value={catState}
+                onChange={(e) => updateCatState(e.target.value)}
+                className='lmj-categories-select'
+            >
+                <option value="">---</option>
                 {categories.map((cat, index) => (
                     <option key={cat + "-" + index} value={cat}>{cat}</option>
                 ))}

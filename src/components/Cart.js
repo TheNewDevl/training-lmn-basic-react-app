@@ -4,10 +4,11 @@ import { useState } from 'react'
 export default function Cart({ cart, updateCart }) {
     const [isOpen, setIsOpen] = useState(false)
 
-    let sum = 0
-    const total = cart.forEach(element => {
-        sum += element.price * element.quantity
-    });
+
+    const total = cart.reduce((acc, item) =>
+        acc = item.price * item.quantity,
+        0
+    )
 
     return (isOpen ? (
         <div className="lmj-cart">
@@ -24,7 +25,7 @@ export default function Cart({ cart, updateCart }) {
             ))}
 
 
-            Total :    {sum}      €
+            Total :    {total}      €
             <button onClick={() => updateCart([])}>Vider le panier</button>
         </div>
     ) : (
