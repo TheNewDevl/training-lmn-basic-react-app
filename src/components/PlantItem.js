@@ -4,7 +4,7 @@ import '../styles/PlantItem.css'
 function PlantItem({ name, cover, id, light, water }) {
     return (
         <li className='lmj-plant-item' key={id}>
-            <img className='lmj-plant-item-cover' src={cover} alt="Cover image" />
+            <img className='lmj-plant-item-cover' src={cover} alt={`${name} cover`} />
             {name}
             <div>
                 <CareScale careType='light' scaleValue={light} />
@@ -13,6 +13,7 @@ function PlantItem({ name, cover, id, light, water }) {
         </li>
     )
 }
+
 
 export default PlantItem
 
