@@ -2,8 +2,8 @@ import { plantList } from '../datas/planList'
 import Categories from './Categories'
 import PlantItem from './PlantItem'
 import '../styles/ShoppingList.css'
-import { useState } from 'react'
-export default function ShoppingList({ cart, updateCart }) {
+
+export default function ShoppingList({ catState, updateCatState, cart, updateCart }) {
 
     const categories = plantList.reduce(
         (acc, plant) => acc.includes(plant.category) ? acc : acc.concat(plant.category), []
@@ -19,12 +19,7 @@ export default function ShoppingList({ cart, updateCart }) {
         }
     }
 
-    const [catState, updateCatState] = useState('')
-    console.log(catState);
-
     const filtered = catState ? plantList.filter((p) => p.category === catState) : plantList
-
-    console.log(filtered);
 
     return (
         <div className='lmj-shopping-list'>

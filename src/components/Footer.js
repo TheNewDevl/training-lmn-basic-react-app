@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../styles/Footer.css'
 
 function Footer() {
@@ -9,7 +9,7 @@ function Footer() {
             ? setInputValue(value)
             : alert("Attention, il n'y a pas d'@, ceci n'est pas une adresse email valide.")
     }
-    console.log(inputValue);
+
     return (
         <footer className='lmj-footer'>
             <div className='lmj-footer-elem'>

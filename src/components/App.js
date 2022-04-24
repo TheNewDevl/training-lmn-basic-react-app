@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Banner from "./Banner";
 import Cart from "./Cart";
 import ShoppingList from "./ShoppingList";
 import logo from '../assets/logo.png'
 import Footer from "./Footer";
 import '../styles/Layout.css'
+const lsCart = JSON.parse(localStorage.getItem('cart'))
 
 function App() {
-  const [cart, updateCart] = useState([])
+
+  const [cart, updateCart] = useState(lsCart ? lsCart : [])
+
+  const [catState, updateCatState] = useState('')
+
+  //update localstorage when cart state change
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
+
   return (
     <div>
       <Banner>
@@ -15,8 +25,8 @@ function App() {
         <h1 className="lmj-title">La maison de la Jungle</h1>
       </Banner>
       <div className="lmj-layout-inner">
-        <Cart cart={cart} updateCart={updateCart} />
-        <ShoppingList cart={cart} updateCart={updateCart} />
+        <Cart catState={catState} updateCatState={updateCatState} cart={cart} updateCart={updateCart} />
+        <ShoppingList catState={catState} updateCatState={updateCatState} cart={cart} updateCart={updateCart} />
       </div>
       <Footer />
     </div>

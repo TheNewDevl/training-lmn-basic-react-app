@@ -1,7 +1,7 @@
 import '../styles/Cart.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-export default function Cart({ cart, updateCart }) {
+export default function Cart({ catState, cart, updateCart }) {
     const [isOpen, setIsOpen] = useState(false)
 
 
@@ -9,6 +9,7 @@ export default function Cart({ cart, updateCart }) {
         acc = item.price * item.quantity,
         0
     )
+
 
     return (isOpen ? (
         <div className="lmj-cart">
